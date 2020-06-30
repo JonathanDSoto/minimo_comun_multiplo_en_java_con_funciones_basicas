@@ -7,7 +7,7 @@ public class Main {
 		
 		Scanner teclado = new Scanner(System.in);  
 		int numeroUno = 0, numeroDos = 0;
-		int mcd = 0;
+		int mcm = 0;
 		
 		System.out.println("Ingrese el primero número");
 		numeroUno = teclado.nextInt();
@@ -15,51 +15,21 @@ public class Main {
 		System.out.println("Ingrese el segundo número");
 		numeroDos = teclado.nextInt();
 		
-		mcd = Mcd(numeroUno,numeroDos);
-		System.out.println("El máximo común divisor es: "+mcd);
+		mcm = Mcm(numeroUno,numeroDos);
+		System.out.println("El mínimo común múltiplo es: "+mcm);
 	} 
 	
-	static int Mcd(int a, int b) {
-		int arregloA[] = new int[a];
-		int arregloB[] = new int[b];
-		int contadorA = 0, contadorB = 0;
+	static int Mcm(int a, int b) {
 		boolean flag = false;
+		int multiploA = 0, multiploB = 0;
 		
-		for (int i = 1; i <= a; i++) {
-			if(a%i==0) {
-				arregloA[contadorA] = i; 
-				contadorA++;
-				
-			} 	
-		} 
-		for (int i = 1; i <= b; i++) {
-			if(b%i==0) {
-				arregloB[contadorB] = i; 
-				contadorB++;
-			}
-		}
-		
-		if(contadorA<contadorB) {
-			
-			while(flag == false) { 
-				for (int i = contadorA-1; i >= 0; i--) { 
-					for (int j = contadorB-1; j >= 0; j--) { 
-						if(arregloA[i] == arregloB[j] && arregloA[i]!=0) {
-							return arregloA[i];
-						}
-					}
-				} 
-			}
-			
-		}else {
-			while(flag == false) { 
-				for (int i = contadorB-1; i >= 0; i--) { 
-					for (int j = contadorA-1; j >= 0; j--) { 
-						if(arregloB[i] == arregloA[j] && arregloB[i]!=0) {
-							return arregloB[i];
-						}
-					}
-				} 
+		for (int i = 1; i <= 10; i++) {
+			multiploA = a*i;
+			for (int j = 1; j <= 10; j++) {
+				multiploB = b*j;
+				if(multiploA==multiploB) {
+					return multiploB;
+				}
 			}
 		}
 		
